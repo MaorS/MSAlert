@@ -1,6 +1,6 @@
 //
 //  MSAlert.swift
-//  Created by Maor Shams on 07/04/2017.
+//  Created by Maor Shams on 11/11/2017.
 //  Copyright © 2017 Maor Shams. All rights reserved.
 //
 import UIKit
@@ -10,12 +10,12 @@ class MSAlert: UIAlertController {
     
     class MSAlertAction : UIAlertAction{
         
-        var type : MSAlert.ActionType?
+        var type : MSAlert.MSActionType?
         
         convenience init(actionTitle: String,
                          style: UIAlertActionStyle,
                          image : UIImage? = nil,
-                         actionType : MSAlert.ActionType? = nil,
+                         actionType : MSAlert.MSActionType? = nil,
                          handler: @escaping ((UIAlertAction) -> Void) ){
             
             self.init(title: actionTitle, style: style, handler: handler)
@@ -25,7 +25,7 @@ class MSAlert: UIAlertController {
         }
     }
     
-    enum ActionType {
+    enum MSActionType {
         
         case cancel
         case ok
@@ -41,9 +41,10 @@ class MSAlert: UIAlertController {
             }
         }
         
+        /// add your images here 
         var image : UIImage?{
             switch self {
-            default : return #imageLiteral(resourceName: "icons8-ok")
+            default : return nil
             }
         }
         
@@ -95,7 +96,7 @@ class MSAlert: UIAlertController {
     }
     
     fileprivate var currentvViewController : UIViewController?
-    fileprivate var handler : ((MSAlert.ActionType?) -> Void)?
+    fileprivate var handler : ((MSAlert.MSActionType?) -> Void)?
     private var sourceView : UIView?
     private var player: AVAudioPlayer?
     
@@ -124,7 +125,7 @@ class MSAlert: UIAlertController {
     ///   - style: (_optional_) - The style of the alert action, by default the value is .default. If the type of the action sheet is .cancel, and the style is nil, the style will set as .cancel
     ///   - image: (_optional_) - The image of the alert action, by default nil (no image)
     ///   - defaultImage: (_optional_) - The default image based on the type from MSActionsSheet.ActionType
-    func add(_ type : ActionType,
+    func add(_ type : MSActionType,
              title : String? = nil,
              style : UIAlertActionStyle? = nil,
              image : UIImage? = nil,
@@ -163,7 +164,7 @@ class MSAlert: UIAlertController {
     /// (Make sure this is the last method called!)
     /// - parameters:
     ///   - completion: (_optional ActionType) The selected alert action.
-    func show(completion: ((MSAlert.ActionType?) -> Void)? = nil){
+    func show(completion: ((MSAlert.MSActionType?) -> Void)? = nil){
         
         self.handler = completion
         
@@ -200,7 +201,3 @@ class MSAlert: UIAlertController {
     }
     
 }
-
-
-
-
