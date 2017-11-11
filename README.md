@@ -1,5 +1,5 @@
 # MSAlert
-#####Simple and super easy to use of native UIAlertController
+##### Simple and super easy to use of native UIAlertController
 
 ## Installation
 
@@ -9,7 +9,7 @@ Drag and drop MSAction.swift and Assets into your project
 
 ## Usage
 
-####Initializate MSAlert object
+#### Initializate MSAlert object
 
 Empty MSAlert object
 ```swift
@@ -22,7 +22,7 @@ Or with title and message
 MSAlert(viewController: self, sourceView: sender, title: "Your Title", message: "Your message")
 ```
 
-####Add alert actions
+#### Add alert actions
 
 Simple alert action from `MSActionType enum`
 ```swift
@@ -46,7 +46,7 @@ Use the default image of `MSActionType enum`
 .add(.cancel, title: "custom title", style: .destructive, defaultImage : true)
 ```
 
-####Add custom alert actions
+#### Add custom alert actions
 
 ```swift
 .add(title: "Accept"){
@@ -60,14 +60,14 @@ customized:
 }
 ```
 
-####Set alert sound
+#### Set alert sound
 
 ```swift
 .setSound(from: myURL)
 ```
 
 
-####Set tint color
+#### Set tint color
 
 ```swift
 .setTint(color: .purple)
@@ -80,11 +80,11 @@ customized:
 #### Show the alert with completion handler
 ```swift
 .show { didPress in
-// on click of alert action
+  // on click of alert action
 
-if didPress == .ok{
-// do some
-}
+  if didPress == .ok{
+    // do some
+  }
 }
 ```
 # License
